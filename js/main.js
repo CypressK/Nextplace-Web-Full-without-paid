@@ -49,13 +49,46 @@ const products = [
     }
 ];
 
+// Constants for DOM elements
+let productList, cartItemsElement, cartTotalElement;
 
-//Render Products on page
+// Retrieve or initialize the shopping cart
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-let productList = document.getElementById('product-list')
+// Event listeners initialization after DOM content is loaded
+document.addEventListener('DOMContentLoaded', initialize);
 
-function renderProducts(){
-    productList.innerHTML = products.map(product => `            
+function initialize() {
+    productList = document.getElementById('product-list');
+    cartItemsElement = document.getElementById('cartItems');
+    cartTotalElement = document.getElementById('cartTotal');
+    setupPageSpecificContent();
+}
+
+function setupPageSpecificContent() {
+    if (productList) {
+        if (isOnPage('index.html')) {
+            renderProducts();
+        }
+    } else {
+        console.error("Product list element is missing.");
+    }
+
+    if (cartItemsElement && cartTotalElement) {
+        if (isOnPage('cart.html')) {
+            renderCartItems();
+        }
+    } else {
+        console.error("Cart elements are missing.");
+    }
+}
+function isOnPage(pageName) {
+    return window.location.pathname.includes(pageName);
+}
+
+// Render all products and add event listeners to Add to Cart buttons
+function renderProducts() {
+    productList.innerHTML = products.map(product => `
         <div class="product">
             <img src="${product.image}" alt="${product.title}" class="product-img">
             <div class="product-infor">
@@ -68,106 +101,60 @@ function renderProducts(){
 
     addCartEventListeners();
 }
-//add to cart
-
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function addCartEventListeners() {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    addToCartButtons.forEach(button => {
+    document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', addToCart);
     });
 }
 
+
 function addToCart(event) {
-    const productID = parseInt(event.target.dataset.id);
+    const productID = parseInt(event.target.getAttribute('data-id'));
     const product = products.find(p => p.id === productID);
+    if (!product) return;
 
-    if (product) {
-        const existingItem = cart.find(item => item.id === productID);
-
-        if (existingItem) {
-            existingItem.quantity++;
-        } else {
-            cart.push({
-                id: product.id,
-                title: product.title,
-                price: product.price,
-                image: product.image,
-                quantity: 1
-            });
-        }
-
-        localStorage.setItem('cart', JSON.stringify(cart));  // Save to local storage
-        alert('Item added');
-        renderCartItems();
+    const existingItem = cart.find(item => item.id === productID);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ ...product, quantity: 1 });
     }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Item added');
+    if (cartItemsElement) renderCartItems();  // Guarded call to renderCartItems
 }
 
-
-let cartItemsElement;
-let cartTotalElement;
-
-document.addEventListener('DOMContentLoaded', function() {
-    cartItemsElement = document.getElementById('cartItems');
-    cartTotalElement = document.getElementById('cartTotal');
-    productList = document.getElementById('product-list');
-
-    if (cartItemsElement && cartTotalElement) {
-        if(window.location.pathname.includes('cart.html')) {
-            renderCartItems();
-        }
-    } else {
-        console.error("Required cart elements are missing.");
-    }
-
-    if(productList) {
-        if(window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-            renderProducts();
-        }
-    } else {
-        console.error("Product list element is missing.");
-    }
-});
-
-
-function renderCartItems(){
-    if(cart.length === 0){
+// Display cart items with options to modify quantity or remove items
+function renderCartItems() {
+    if (cart.length === 0) {
         cartItemsElement.innerHTML = '<p>Your cart is empty.</p>';
     } else {
-        cartItemsElement.innerHTML = cart.map(
-            (item) =>`
+        cartItemsElement.innerHTML = cart.map(item => `
             <div class="cartItem">
-                <img src="${item.image}" alt="${item.title}" class=cartImg>
+                <img src="${item.image}" alt="${item.title}" class="cartImg">
                 <div class="cart-item-info">
                     <h2 class="cart-item-title">${item.title}</h2>
                     <input type="number" class="cart-item-quantity" min="1" value="${item.quantity}" data-id="${item.id}">
+                    <h2 class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</h2>
+                    <button class="remove-from-cart" onclick="removeItemFromCart(${item.id})">Remove</button>
                 </div>
-                <h2 class="cart-item-price">${(item.price * item.quantity).toFixed(2)}</h2>
-                <button class="remove-from-cart" onclick="removeItemFromCart(${item.id})">Remove</button>
             </div>`
         ).join("");
     }
 }
-// // Separate the concerns for clarity
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Check if on the cart page, and render cart items if true
-//     if(window.location.pathname.includes('cart.html')){
-//         renderCartItems();
-//     }
 
-//     // Assuming renderProducts is defined elsewhere and this is the main page
-//     // Check if on the main page, and render products if true
-//     if(window.location.pathname.includes('index.html') || window.location.pathname === '/'){
-//         renderProducts(); // Ensure this function exists and is defined in your script
-//     }
-// });
 
-// Function to handle removal of cart item (to be implemented)
-function removeItemFromCart(itemId){
-    // Logic to remove item from cart
-    // Update the cart in localStorage
-    // Re-render the cart
+function updateQuantity(input, itemId) {
+    const item = cart.find(item => item.id === itemId);
+    item.quantity = parseInt(input.value);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCartItems();  // Update cart display
 }
 
-
+function removeItemFromCart(itemId) {
+    cart = cart.filter(item => item.id !== itemId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCartItems();  // Update cart display
+}
