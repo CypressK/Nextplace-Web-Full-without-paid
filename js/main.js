@@ -62,6 +62,7 @@ function initialize() {
     productList = document.getElementById('product-list');
     cartItemsElement = document.getElementById('cartItems');
     cartTotalElement = document.getElementById('cartTotal');
+    updateCartIcon()
     setupPageSpecificContent();
 }
 
@@ -77,6 +78,7 @@ function setupPageSpecificContent() {
     if (cartItemsElement && cartTotalElement) {
         if (isOnPage('cart.html')) {
             renderCartItems();
+            calculateCartTotal();
         }
     } else {
         console.error("Cart elements are missing.");
@@ -122,8 +124,10 @@ function addToCart(event) {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Item added');
+    event.target.textContent = 'Added';
     if (cartItemsElement) renderCartItems();  // Guarded call to renderCartItems
+    updateCartIcon()
+    calculateCartTotal()
 }
 
 // Display cart items with options to modify quantity or remove items
@@ -136,12 +140,13 @@ function renderCartItems() {
                 <img src="${item.image}" alt="${item.title}" class="cartImg">
                 <div class="cart-item-info">
                     <h2 class="cart-item-title">${item.title}</h2>
-                    <input type="number" class="cart-item-quantity" min="1" value="${item.quantity}" data-id="${item.id}">
+                    <input type="number" class="cart-item-quantity" onchange="updateQuantity(this,${item.id})" min="1" value="${item.quantity}" data-id="${item.id}">
                     <h2 class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</h2>
                     <button class="remove-from-cart" onclick="removeItemFromCart(${item.id})">Remove</button>
                 </div>
             </div>`
         ).join("");
+        calculateCartTotal()
     }
 }
 
@@ -150,11 +155,34 @@ function updateQuantity(input, itemId) {
     const item = cart.find(item => item.id === itemId);
     item.quantity = parseInt(input.value);
     localStorage.setItem('cart', JSON.stringify(cart));
-    renderCartItems();  // Update cart display
+    renderCartItems();
+    calculateCartTotal();
+    updateCartIcon();
+}
+
+function calculateCartTotal(){
+    if(cartTotalElement){
+        const total=cart.reduce((sum,item)=>sum + item.price * item.quantity,0);
+        cartTotalElement.textContent=`Total: $${total.toFixed(2)}`
+    }
 }
 
 function removeItemFromCart(itemId) {
     cart = cart.filter(item => item.id !== itemId);
     localStorage.setItem('cart', JSON.stringify(cart));
-    renderCartItems();  // Update cart display
+    renderCartItems();
+    calculateCartTotal();
+    updateCartIcon();
+    
 }
+
+
+function updateCartIcon(){
+    const cartIcon = document.getElementById('cart-icon');
+    const totalQuantity = cart.reduce((sum,item)=> sum + item.quantity,0)
+    cartIcon.setAttribute('data-quantity',totalQuantity.toString());
+}
+window.addEventListener('storage',function(){
+    cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCartIcon();
+});
