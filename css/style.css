@@ -808,7 +808,7 @@ footer{
 
     .home-img img{
         width: 100%;
-        height: 550px;
+        height: 450px;
     }
 
     .home-img::after{
@@ -834,6 +834,35 @@ footer{
     section.home{
         padding: 1rem 1rem;
         margin-bottom: 0px;
+    }
+
+    .product-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(130px,auto));
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        padding: 10px;
+        margin-bottom: 50px;
+    }
+
+    .product-container .add-to-cart{
+        font-size: 0.5rem;
+    }
+    .slider-text h2{
+        font-size: 1rem;
+    }
+
+    .home-img::after{
+        position: absolute;
+        content: "Make it simple";
+        color: var(--light-brown);
+        font-size: 0.5rem;
+        font-weight: 900;
+        transform: translate(-35%);
+        text-transform: uppercase;
+        text-align: center;
+        z-index: 1;
     }
 }
 
