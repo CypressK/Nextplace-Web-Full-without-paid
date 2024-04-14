@@ -242,8 +242,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let basket = document.getElementById('cart-icon');
     let cartbar = document.querySelector('.cartbar');
     basket.addEventListener('click', (event) => {
-    cartbar.classList.toggle('active');
-        });
+        event.stopPropagation();
+        cartbar.classList.toggle('active');
+    });
 })
 
 document.addEventListener('click', (event) => {
