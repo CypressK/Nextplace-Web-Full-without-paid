@@ -1,3 +1,5 @@
+console.log(document.querySelector('#menu-icon'))
+
 const products = [
     {
         id: 1,
