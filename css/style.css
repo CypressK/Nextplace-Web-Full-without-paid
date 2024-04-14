@@ -413,7 +413,6 @@ section.home{
     color: var(--text-color);
     margin-top: auto;
     text-align: center;
-
 }
 
 .product-price{
@@ -874,5 +873,38 @@ footer{
     .home-img::after{
         top: 100%;
         font-size: 1.5rem;
+    }
+}
+
+@media (max-width:340px){
+    .product-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(100px,auto));
+        gap: 0.5rem;
+
+    }
+    .product-title{
+        font-size: 0.6rem;
+        margin-top: 0.2rem;
+        margin-top: auto;
+    }
+    
+    .product-price{
+        font-size: 0.5rem;
+        padding: 5px;
+        margin-top: 0.2rem;
+    }
+    .add-to-cart{
+        display: flex;
+        justify-content: center;
+        text-align: right;
+        font-weight: 600;
+        color: var(--bg-color);
+        background-color: var(--main-color);
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        padding: 5px;
+        margin-top: 0.2rem;
     }
 }
