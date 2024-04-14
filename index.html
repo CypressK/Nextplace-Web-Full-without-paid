@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextPlease Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="header">
+        <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="index.html" class="logo">Next.Please</a>
+            <div class="navbar">
+                <a href="#" class="nav-link">What's New</a>
+                <a href="#" class="nav-link">Man</a>
+                <a href="#" class="nav-link">Woman</a>
+                <a href="#" class="nav-link">Shoses</a>
+            </div>
+            <!--cartbar-->
+            <div class="cartbar">
+                <i class='bx bx-x' id="close-cart-icon"></i>
+                <h2 class="cartbar-title">Your Cart</h2>
+                <div class= "cartbar-items" id="cartItems"></div>
+                <div class="cartbar-t">
+                    <div id="cartTotal"></div>
+                    <a href="cart.html" class="go-to-cart">Check Out</a>
+                </div>
+            </div>
+            <i class='bx bx-shopping-bag' id="cart-icon" data-quantity ="0"></i>
+        </div>
+    </div>
+
+    <section class="home" id="home">
+        <div class="home-img">
+            <img src="imgs/cover2.png" alt="">
+        </div>
+    </section>
+    <section class="main-silder">
+        <div class="slider-container">
+            <div class="slider-text">
+                <h2></h2>
+            </div>
+            <div class="slider-frame">
+                <div class="slide-images">
+                    <div class="img-container">
+                        <img src="imgs/1.1.jpg" alt="Description of Image 1">
+                    </div>
+                    <div class="img-container">
+                        <img src="imgs/1.2.jpg" alt="Description of Image 2">
+                    </div>
+                    <div class="img-container">
+                        <img src="imgs/1.3.jpg" alt="Description of Image 3">
+                    </div>
+                    <div class="img-container">
+                        <img src="imgs/1.4.jpg" alt="Description of Image 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="product container" id="products">
+        <h2 class="heading">Discover Product</h2>
+        <div class="product-container" id="product-list"></div>
+
+    </section>
+    <footer id="footer">
+        <div class="footer-c container">
+            <div class="footer-logo">
+                <h2>Next.Please</h2>
+                <div class="social">
+                    <i class='bx bxl-instagram-alt'></i>
+                    <i class='bx bxl-facebook-circle' ></i>
+                    <i class='bx bxl-twitter' ></i>
+                    <i class='bx bxl-whatsapp' ></i>
+                    <i class='bx bxl-youtube' ></i>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3>Help</h3>
+                <a href="#">Contact Us</a>
+                <a href="#">Faq</a>
+                <a href="#">Shipment</a>
+                <a href="#">Payment</a>
+                <a href="#">Track You Order</a>
+                <a href="#">Return Your Order</a>
+            </div>
+            <div class="Legal-Info">
+                <a href="#">Prvacy Policy</a>
+                <a href="#">Terms & Condition</a>
+                <a href="#">Return Policy</a>
+                <a href="#">Comunity</a>
+                <a href="#">Get Card</a>
+            </div>
+        </div>
+        <p class="copyright container">&#169KLaw production</p>
+    </footer>
+    <script src="/js/main.js"></script>
+</body>
+</html>
