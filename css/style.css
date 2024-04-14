@@ -49,7 +49,7 @@ section.home{
 .cartbar{
     position: fixed;
     top: 0px;
-    right: 0px;
+    right: -1000px;
     width: 360px;
     height: 100vh;
     padding: 20px;
