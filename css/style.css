@@ -31,6 +31,11 @@ img{
 
 section{
     padding: 1rem 1rem;
+    margin-bottom: 20px;
+}
+
+section.home{
+    padding: 1rem 1rem;
     margin-bottom: 200px;
 }
 
@@ -39,6 +44,7 @@ section{
     margin: auto;
     width: 100%;
 }
+
 
 .cartbar{
     position: fixed;
@@ -61,7 +67,19 @@ section{
     color: var(--main-color);
     font-size: 1.5rem;
     text-align: center;
+    position: sticky;
+    top: 0;
+    padding-bottom: 10px;
 }
+
+.cartbar .cartbar-items{
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* firefox */
+    scrollbar-width: thin var(--main-color);
+    scrollbar-color: var(--main-color) rgba(0,0,0,0.1);
+}
+
 #close-cart-icon{
     position: relative;
     right: -300px;
@@ -69,10 +87,9 @@ section{
     cursor: pointer;
 }
 .cartbar .cart-item-info{
-    display: flex;
-    flex: 1; 
-    justify-content: space-around;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:10px;
     margin-left: 50px;
     align-items: center;
 }
@@ -282,41 +299,34 @@ section{
 
 .slider-container{
     display: grid;
-    grid-template-columns: minmax(240px, 1fr) minmax(400px, 3fr);
+    grid-template-columns: minmax(220px, 1fr) minmax(400px, 3fr);
     justify-content: center;
     align-items: center;
     width: 80%;
     background-color: var(--bg-color);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 250px;
+    margin-top: 200px;
     margin-bottom: 0;
     overflow: hidden;
 
 }
 
 .slider-text{
-    color: black;
     padding: 20px;
     text-align: center;
     width: 100%;
     margin: auto;
     background-color: var(--bg-color);
     position: relative;
+    text-transform: uppercase;
+
 }
 
-.slider-text h2::before{
-    content: "What's news";
-    font-size: 3rem;
-    text-transform: uppercase;
-    color: var(--text-color);
-}
-
-.slider-text h2::after{
-    content: "";
-    font-size: 3rem;
-    text-transform: uppercase;
-    color: var(--text-color);
+.slider-text h2{
+    color: var(--main-color);
+    font-size: 2.5rem;
+    text-align: center;
 }
 
 .slider-frame {
@@ -358,11 +368,13 @@ section{
 }
 
 .heading{
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 900;
+    position: relative;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
+    color: var(--main-color);
 }
 
 
@@ -373,6 +385,7 @@ section{
     justify-content: center;
     gap: 2rem;
     padding: 10px;
+    margin-bottom: 50px;
 }
 
 .product-infor{
@@ -439,10 +452,10 @@ section{
 }
 
 .back-homepage span,.back-homepage .bx{
-    margin-top: 0px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--text-color);
+    cursor: pointer;
 }
 
 .cart-s-title{
@@ -785,13 +798,14 @@ footer{
         font-size: 0.5rem;
         transition: 0.5s;
     }
-}
-
-@media (max-width:440px){
     .product-container{
         display: grid;
         grid-template-columns: repeat(auto-fit,minmax(150px,auto));
     }
+}
+
+@media (max-width:440px){
+
     .home-img img{
         width: 100%;
         height: 550px;
@@ -816,6 +830,10 @@ footer{
     }
     .home{
         margin-bottom: 0;
+    }
+    section.home{
+        padding: 1rem 1rem;
+        margin-bottom: 0px;
     }
 }
 
