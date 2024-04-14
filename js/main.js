@@ -248,8 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('click', (event) => {
     let cartbar = document.querySelector('.cartbar');
-    if(isOnPage('index.html')){
-        if (cartbar.classList.contains('active') 
+    if (cartbar.classList.contains('active') 
     && !cartbar.contains(event.target) 
     && !event.target.closest('#cart-icon') 
     &&!event.target.matches('.remove-from-cart') 
@@ -258,4 +257,4 @@ document.addEventListener('click', (event) => {
         cartbar.classList.remove('active');
     }
     }
-});
+);
