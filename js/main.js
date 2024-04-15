@@ -5,49 +5,49 @@ const products = [
         id: 1,
         title: "Casual Black Tee",
         price: 22.9,
-        image: "imgs/1.jpg"
+        image: "https://images.pexels.com/photos/9558577/pexels-photo-9558577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         id: 2,
         title: "Classic White Tee",
         price: 22.9,
-        image: "imgs/9.jpg"
+        image: "https://images.pexels.com/photos/9558601/pexels-photo-9558601.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         id: 3,
-        title: "Olive Green Jacket",
+        title: "Classic Peach Tee",
         price: 42.9,
-        image: "imgs/8.jpg"
+        image: "https://images.pexels.com/photos/9558894/pexels-photo-9558894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         id: 4,
-        title: "Urban Black Longline Tee",
+        title: "Urban pink Tee",
         price: 26.9,
-        image: "imgs/2.jpg"
+        image: "https://images.pexels.com/photos/5325572/pexels-photo-5325572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         id: 5,
-        title: "Mustard Yellow Fitted Top",
+        title: "Basic Black Tee",
         price: 32.5,
-        image: "imgs/12.jpg"
+        image: "https://images.pexels.com/photos/9558583/pexels-photo-9558583.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         id: 6,
         title: "Neutral Peach Tee",
         price: 28.9,
-        image: "imgs/11.jpg"
+        image: "https://images.pexels.com/photos/9558765/pexels-photo-9558765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         id: 7,
         title: "Basic White Tee",
         price: 22.9,
-        image: "imgs/7.jpg"
+        image: "https://images.pexels.com/photos/9558752/pexels-photo-9558752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         id: 8,
-        title: "Graphic White Tee",
+        title: "Casual Black Tee",
         price: 27.9,
-        image: "imgs/15.jpg"
+        image: "https://images.pexels.com/photos/9558684/pexels-photo-9558684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1https://images.pexels.com/photos/9558790/pexels-photo-9558790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     }
 ];
 

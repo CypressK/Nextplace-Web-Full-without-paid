@@ -13,11 +13,11 @@
 }
 
 :root{
-    --main-color:#5a2e14;
-    --light-brown:#aa682e;
-    --text-color:#040344;
+    --main-color:#11a325;
+    --light-brown:#f8a342;
+    --text-color:#9e2f2f;
     --bg-color:#F0F0F2;
-    --cintainer-color:#8C8C8C;
+    --cintainer-color:#c2c0bf;
 }
 
 body{
@@ -302,7 +302,7 @@ section.home{
     grid-template-columns: minmax(220px, 1fr) minmax(400px, 3fr);
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 60%;
     background-color: var(--bg-color);
     margin-left: auto;
     margin-right: auto;
