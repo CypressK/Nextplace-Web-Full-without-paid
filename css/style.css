@@ -748,6 +748,10 @@ footer{
         background-color: var(--cintainer-color);
         transition: 0.5s ease;
     }
+
+    .home{
+        top: 0;
+    }
 }
 
 @media (max-width:600px){
@@ -778,6 +782,18 @@ footer{
     }
     .slider-text h2::before{
         font-size: 2rem;
+    }
+
+    .header{
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 120px;
+        transition: 0.5s;
+    
     }
 }
 
