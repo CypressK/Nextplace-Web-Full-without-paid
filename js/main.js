@@ -1,5 +1,3 @@
-console.log(document.querySelector('#menu-icon'))
-
 const products = [
     {
         id: 1,
@@ -47,7 +45,7 @@ const products = [
         id: 8,
         title: "Casual Black Tee",
         price: 27.9,
-        image: "https://images.pexels.com/photos/9558684/pexels-photo-9558684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1https://images.pexels.com/photos/9558790/pexels-photo-9558790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        image: "https://images.pexels.com/photos/9558790/pexels-photo-9558790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     }
 ];
 
